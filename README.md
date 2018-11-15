@@ -15,7 +15,7 @@ Includes 2 major (meaning used by a lot of other containers in this repo) base c
     * There are more containers that extend one of the languge-based containers with a major library/SDK/IDE etc.
       * Such as Android/Kotlin (Java) and SFML (C++)
   * These containers are meant to be used as portable development environments.
-    * They allow for convenient use of full IDEs in a clean; dedicated operating system.
+    * They allow for convenient use of full IDEs in a clean; dedicated system.
     * Connect via a VNC/RDP connection or a web browser (visiting a page created by NoVNC.)
     * They don't drain the battery or tax the hardware of the thin client device; the server hardware will be faster in almost all cases.
     * Negligible latency; suitable for developing games and other programs where latency is important during testing.
