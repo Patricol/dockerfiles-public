@@ -35,7 +35,7 @@ Includes 2 major (meaning used by a lot of other containers in this repo) base c
   * Supports automatically resizing the server desktop when the client window changes size/shape.
   * Runs i3 with sane defaults and powerful customization options.
     * Config file is a miniscule fraction of the Openbox config for a similar setup.
-  * Pre-setup scripts for updating applications and launching the primary GUI application; very easy to extend.
+  * Pre-prepared scripts for updating applications and launching the primary GUI application; very easy to extend.
   * Use mounted /config folders to persist all settings across the containers' destruction.
 
 Contains various containers for syncing or serving files; like:
