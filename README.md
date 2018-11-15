@@ -9,7 +9,7 @@ This is a public snapshot of my original, private repository; which is still und
 ## Contents
 
 Includes 2 major (meaning used by a lot of other containers in this repo) base containers for GUI applications:
-* ubuntu/x11: Eclipse Che-ready container with vnc, novnc, and rdp access; with programs like Atom and Chromium.
+* ubuntu/x11: Eclipse Che-ready container with VNC, NoVNC, and RDP access; with programs like Atom and Chromium.
   * Other containers based off of this container add a programming language, its related tools, and an IDE for it.
     * There are such containers for C/C++, Python, Javascript, and Java.
     * There are more containers that extend one of the languge-based containers with a major library/SDK/IDE etc.
@@ -21,15 +21,15 @@ Includes 2 major (meaning used by a lot of other containers in this repo) base c
     * Negligible latency; suitable for developing games and other programs where latency is important during testing.
     * Hardware accelerateable; with KVM and Cuda support.
     * Uniform experience regardless of client hardware.
-      * No-compromises development on Chromebooks without needing to install linux applications or enable developer mode.
-      * Very usable on phones; especially when pairing VNC or XRDP with a guacamole stack.
+      * No-compromises development on Chromebooks without needing to install Linux applications or enable developer mode.
+      * Very usable on phones; especially when pairing VNC or XRDP with a Guacamole stack.
       * VNC, XRDP, and NoVNC all resize the host desktop automatically when the client window changes size/shape. (NoVNC needs an option to be selected in the client-side site.)
     * Kept up to date with autobuilding containers.
     * Tailored for (optional) use with Eclipse Che, which provides a web portal for starting docker containers to use as workspaces; and has its own IDE.
     * A new VNC/RDP/NoVNC password is generated when the container starts, and is echoed to the user whenever they start one of those services.
 * other/base/(arch/ubuntu):
   * Relatively minimal base for making GUI applications accessible via VNC; and securely through the web when paired with Guacamole.
-    * Has containers for calibre, digikam, filezilla, google_music_manager, quassel, and virt-manager. (also WIP crashplan)
+    * Has containers for Calibre, DigiKam, FileZilla, Google Music Manager, Quassel Client, and Virt-Manager. (also WIP CrashPlan)
   * Has base containers for both Arch Linux and Ubuntu; for the widest possible package support, and the choice between stabile and cutting-edge versions.
     * Access to the AUR also trivializes the setup for many applications; thus further simplifying maintenance.
   * Supports automatically resizing the server desktop when the client window changes size/shape.
@@ -46,7 +46,7 @@ Contains various containers for syncing or serving files; like:
 
 Contains an Arch Linux base container useful for testing AUR applications on a fresh setup; aiding debugging.
 
-And many more!
+And more!
 
 ## Misc Notes
 
