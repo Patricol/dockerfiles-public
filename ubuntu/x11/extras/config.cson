@@ -1,0 +1,18 @@
+"*":
+  core:
+    audioBeep: false
+    autoHideMenuBar: true
+    disabledPackages: [
+      "spell-check"
+    ]
+    telemetryConsent: "no"
+    themes: [
+      "one-dark-ui"
+      "atom-dark-syntax"
+    ]
+  editor:
+    scrollPastEnd: true
+    showIndentGuide: true
+    softWrap: true
+  welcome:
+    showOnStartup: false

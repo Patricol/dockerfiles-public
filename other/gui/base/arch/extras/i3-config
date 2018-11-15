@@ -1,0 +1,51 @@
+#make this more mouse friendly for guacamole usage etc.
+
+font pango:monospace 8
+
+set $def_border normal 1
+new_window $def_border
+#default_border $def_border
+new_float $def_border
+#default_floating_border $def_border
+
+default_orientation auto
+workspace_layout default
+hide_edge_borders smart
+focus_follows_mouse yes
+mouse_warping none
+popup_during_fullscreen smart
+
+
+client.focused          #ffffff #000000 #ffffff #888888   #ffffff
+client.focused_inactive #444444 #000000 #999999 #888888   #444444
+client.unfocused        #000000 #000000 #666666 #888888   #000000
+client.urgent           #ff0000 #ff0000 #ffffff #888888   #ff0000
+client.placeholder      #000000 #0c0c0c #ffffff #888888   #0c0c0c
+client.background       #ffffff
+
+
+set $alt Mod1
+
+
+bindsym $alt+Return exec startapp
+
+
+# The middle button over a titlebar kills the window
+bindsym --release button2 kill
+bindsym --whole-window $alt+button2 kill
+
+# Right click over a titlebar toggles floating
+bindsym button3 floating toggle
+bindsym --whole-window $alt+button3 floating toggle
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $alt
+
+
+#Hide vncconfig window. closing it could prevent copy/paste from working.
+for_window [title="VNC config"] move scratchpad
+
+
+exec xsetroot -solid black
+
+exec_always startapp

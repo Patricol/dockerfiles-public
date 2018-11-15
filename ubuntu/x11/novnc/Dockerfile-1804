@@ -1,0 +1,21 @@
+FROM patricol/ubuntu_vnc:18.04
+
+
+USER root
+
+RUN apt-get update; \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y \
+    net-tools && \
+    apt-get -y clean && \
+    rm -rf /var/lib/apt/lists/*
+
+EXPOSE 6080
+RUN git clone https://github.com/novnc/noVNC.git /opt/noVNC && \
+    git clone https://github.com/kanaka/websockify /opt/noVNC/utils/websockify
+
+#COPY --chown=root:root extras/index.html /opt/noVNC/#Not yet supported by docker hub's automated builds, which use an outdated version of docker.
+COPY extras/index.html /opt/noVNC/
+RUN echo '#!/bin/bash\n/home/user/vnc.sh\n/opt/noVNC/utils/launch.sh --vnc localhost:5900 --listen 6080' > /home/user/novnc.sh && \
+    chmod +x /home/user/novnc.sh
+
+USER user

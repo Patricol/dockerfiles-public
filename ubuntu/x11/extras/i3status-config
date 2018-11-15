@@ -1,0 +1,28 @@
+general {
+        output_format = "i3bar"
+        colors = true
+        interval = 2
+}
+
+order += "volume master"
+order += "disk /"
+order += "cpu_usage"
+order += "tztime local"
+
+volume master {
+        format = "♪: %volume"
+        format_muted = "♪: muted (%volume)"
+        device = "pulse:1"
+}
+
+disk "/" {
+        format = "DISK:%percentage_used"
+}
+
+cpu_usage {
+        format = "CPU:%usage"
+}
+
+tztime local {
+        format = "%H:%M"
+}

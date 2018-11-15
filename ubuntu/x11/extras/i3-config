@@ -1,0 +1,303 @@
+# i3 config file (v4)
+# https://i3wm.org/docs/userguide.html#configuring
+
+#make this more mouse friendly for novnc usage etc.
+
+
+# APPEARANCE ##################################################################
+
+set $def_border normal 1
+new_window $def_border
+new_float $def_border
+#default_border $def_border
+#default_floating_border $def_border
+
+font pango:monospace 8
+
+# class                 border  backgr. text    indicator child_border
+# A client which currently has the focus
+client.focused          #ffffff #000000 #ffffff #888888   #ffffff
+# A client which is the focused one of its container, but it does not have the focus at the moment.
+client.focused_inactive #444444 #000000 #999999 #888888   #444444
+# A client which is not the focused one of its container.
+client.unfocused        #000000 #000000 #666666 #888888   #000000
+# A client which has its urgency hint activated.
+client.urgent           #ff0000 #ff0000 #ffffff #888888   #ff0000
+# Background and text color are used to draw placeholder window contents (when restoring layouts).
+client.placeholder      #000000 #0c0c0c #ffffff #888888   #0c0c0c
+# Background color which will be used to paint the background of the client window on top of which the client will be rendered. Only clients which do not cover the whole area of this window expose the color. Note that this colorclass only takes a single color.
+client.background       #ffffff
+# Note that for the window decorations, the color around the child window is the "child_border", and "border" color is only the two thin lines around the titlebar.
+# The indicator color is used for indicating where a new window will be opened. For horizontal split containers, the right border will be painted in indicator color, for vertical split containers, the bottom border. This only applies to single windows within a split container, which are otherwise indistinguishable from single windows outside of a split container.
+
+
+
+
+
+# BEHAVIOR ####################################################################
+
+default_orientation auto
+#default|stacking|tabbed
+workspace_layout default
+hide_edge_borders smart
+focus_follows_mouse yes
+mouse_warping none
+#popup_during_fullscreen smart
+popup_during_fullscreen leave_fullscreen
+#focus_wrapping yes
+workspace_auto_back_and_forth yes
+
+
+
+
+
+# BUTTON ALIASES ##############################################################
+
+# Alt
+set $mod Mod1
+# Win
+set $mod2 Mod4
+
+set $alt Mod1
+set $win Mod4
+set $shift Shift
+set $ctrl Control
+
+# Mouse
+set $mouse-left		button1
+set $mouse-right	button3
+set $mouse-wheel-click	button2
+set $mouse-wheel-up	button4
+set $mouse-wheel-down	button5
+set $mouse-wheel-left	button8
+set $mouse-wheel-right	button9
+
+set $windows-key-code 133
+
+
+
+# MOUSE BINDINGS ##############################################################
+
+bindsym $mouse-right floating toggle
+bindsym --whole-window $mod+$mouse-right floating toggle
+
+bindsym --whole-window $mod+$mouse-wheel-click kill
+
+
+# The middle button over a titlebar kills the window
+bindsym --release $mouse-wheel-click kill
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+bindsym --whole-window $mod+$mouse-wheel-left	move left
+bindsym --whole-window $mod+$mouse-wheel-down	move down
+bindsym --whole-window $mod+$mouse-wheel-up	move up
+bindsym --whole-window $mod+$mouse-wheel-right	move right
+
+bindsym --whole-window $mod+$shift+$mouse-wheel-left	move container to workspace prev
+bindsym --whole-window $mod+$shift+$mouse-wheel-down	move container to workspace next
+bindsym --whole-window $mod+$shift+$mouse-wheel-up	move container to workspace prev
+bindsym --whole-window $mod+$shift+$mouse-wheel-right	move container to workspace next
+
+
+
+
+
+# KEYBOARD BINDINGS ###########################################################
+
+set $exit_i3			exec --no-startup-id "i3-nagbar -t warning -m 'Exit i3?' -b 'Yes' 'i3-msg exit'"
+#bindsym $ctrl+$alt+Delete	$exit_i3
+#bindsym $mod+$shift+e		$exit_i3
+
+# reload the configuration file
+bindsym $mod+$shift+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+$shift+r restart
+
+# kill focused window
+bindsym $mod+$shift+q kill
+bindsym $alt+F4 kill
+
+bindsym $mod+x split toggle
+
+# enter fullscreen mode for the focused container
+#should also make this focus the window under mouse. if you exit fullscreen and your mouse is above a different window than the one that was just fullscreened, focus won't follow the mouse until you move it off that window.
+bindsym $mod+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# change focus between tiling / floating windows
+bindsym $mod+d focus mode_toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+# focus the child container
+#bindsym $mod+d focus child
+
+
+# change focus
+bindsym $mod+j focus left
+bindsym $mod+k focus down
+bindsym $mod+i focus up
+bindsym $mod+l focus right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# move focused window
+bindsym $mod+$shift+j move left
+bindsym $mod+$shift+k move down
+bindsym $mod+$shift+i move up
+bindsym $mod+$shift+l move right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+$shift+Left move left
+bindsym $mod+$shift+Down move down
+bindsym $mod+$shift+Up move up
+bindsym $mod+$shift+Right move right
+
+
+
+bindsym $mod+r mode "resize"
+mode "resize" {
+        set $big 10 px or 10 ppt
+        set $small 1 px or 1 ppt
+        set $sw resize shrink width
+        set $gw resize grow width
+        set $sh resize shrink height
+        set $gh resize grow height
+        set $exit mode "default"
+
+        bindsym j	$sw $big
+        bindsym k	$gh $big
+        bindsym i	$sh $big
+        bindsym l	$gw $big
+        bindsym Left	$sw $big
+        bindsym Down	$gh $big
+        bindsym Up	$sh $big
+        bindsym Right	$gw $big
+
+        bindsym a	$sw $small
+        bindsym s	$gh $small
+        bindsym w	$sh $small
+        bindsym d	$gw $small
+
+        bindsym Return	$exit
+        bindsym Escape	$exit
+        bindsym space	$exit
+        bindsym $mod+r	$exit
+}
+
+
+set $ws1 workspace 1
+set $ws2 workspace 2
+set $ws3 workspace 3
+set $ws4 workspace 4
+set $ws5 workspace 5
+set $ws6 workspace 6
+set $ws7 workspace 7
+set $ws8 workspace 8
+set $ws9 workspace 9
+set $ws10 workspace 10
+
+# switch to workspace
+bindsym $mod+1 $ws1
+bindsym $mod+2 $ws2
+bindsym $mod+3 $ws3
+bindsym $mod+4 $ws4
+bindsym $mod+5 $ws5
+bindsym $mod+6 $ws6
+bindsym $mod+7 $ws7
+bindsym $mod+8 $ws8
+bindsym $mod+9 $ws9
+bindsym $mod+0 $ws10
+
+# move focused container to workspace
+bindsym $mod+$shift+1 move container to $ws1
+bindsym $mod+$shift+2 move container to $ws2
+bindsym $mod+$shift+3 move container to $ws3
+bindsym $mod+$shift+4 move container to $ws4
+bindsym $mod+$shift+5 move container to $ws5
+bindsym $mod+$shift+6 move container to $ws6
+bindsym $mod+$shift+7 move container to $ws7
+bindsym $mod+$shift+8 move container to $ws8
+bindsym $mod+$shift+9 move container to $ws9
+bindsym $mod+$shift+0 move container to $ws10
+
+# move focused container to workspace AND switch to workspace
+# don't put a space between the first $wsx and the ";", causes some weird issues
+bindsym $mod+$shift+$ctrl+1 move container to $ws1; $ws1
+bindsym $mod+$shift+$ctrl+2 move container to $ws2; $ws2
+bindsym $mod+$shift+$ctrl+3 move container to $ws3; $ws3
+bindsym $mod+$shift+$ctrl+4 move container to $ws4; $ws4
+bindsym $mod+$shift+$ctrl+5 move container to $ws5; $ws5
+bindsym $mod+$shift+$ctrl+6 move container to $ws6; $ws6
+bindsym $mod+$shift+$ctrl+7 move container to $ws7; $ws7
+bindsym $mod+$shift+$ctrl+8 move container to $ws8; $ws8
+bindsym $mod+$shift+$ctrl+9 move container to $ws9; $ws9
+bindsym $mod+$shift+$ctrl+0 move container to $ws10; $ws10
+
+
+
+
+
+# PROGRAM ALIASES #############################################################
+
+set $launcher			exec --no-startup-id dmenu_run
+set $terminal			exec terminator
+set $chrome			exec chromium
+set $volume-unmute		exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ false
+set $volume-raise		exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
+set $volume-lower		exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
+set $volume-toggle-mute		exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
+
+
+
+
+
+# LAUNCHING HOTKEYS ###########################################################
+
+bindsym $mod+Return		$terminal
+bindsym $mod+space		$launcher
+bindsym $mod2+space		$launcher
+bindsym $mod2+r			$launcher
+bindsym $mod2+s			$launcher
+bindsym $mod2+c			$chrome
+
+bindsym XF86AudioRaiseVolume    $volume-unmute ; $volume-raise
+bindsym XF86AudioLowerVolume    $volume-unmute ; $volume-lower
+bindsym XF86AudioMute    	$volume-toggle-mute
+
+bar {
+	status_command i3status
+	position top
+	tray_padding 2
+	font pango:monospace 8
+	#default separator_symbol is a 1px bar
+	#separator_symbol |
+	bindsym button2 $terminal
+	bindsym button3 $launcher
+	colors {
+		background         #000000
+		focused_background #000000
+		statusline         #ffffff
+		focused_statusline #ffffff
+		separator          #888888
+		focused_separator  #888888
+
+		focused_workspace  #ffffff #000000 #ffffff
+		active_workspace   #444444 #000000 #ffffff
+		inactive_workspace #000000 #000000 #ffffff
+		urgent_workspace   #ff0000 #000000 #ffffff
+
+		binding_mode       #ff0000 #ff0000 #000000
+	}
+}

@@ -1,0 +1,1 @@
+FROM patricol/ubuntu_jdk:18.04

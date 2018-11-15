@@ -1,0 +1,4 @@
+FROM patricol/compile:xrdp as xrdp_all
+FROM scratch as xrdp
+COPY --from=xrdp_all /1804/ /
+FROM patricol/ubuntu_novnc:18.04

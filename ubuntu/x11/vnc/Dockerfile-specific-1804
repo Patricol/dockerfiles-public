@@ -1,0 +1,1 @@
+FROM patricol/ubuntu_supervisor:18.04

@@ -1,0 +1,19 @@
+# Directory where the files will be synced
+sync_dir = "/data"
+# Skip files and directories that match this pattern
+# Note: after changing skip_file, you must perform a full synchronization by executing onedrive --resync
+skip_file = ".*|~*"
+# Selective sync allows you to sync only specific files and directories.
+# To enable selective sync create a file named sync_list in ~/.config/onedrive.
+# Each line of the file represents a relative path from your sync_dir.
+# All files and directories not matching any line of the file will be skipped during all operations.
+# Here is an example of sync_list:
+#   Backup
+#   Documents/latest_report.docx
+#   Work/ProjectX
+#   notes.txt
+# Note: after changing the sync list, you must perform a full synchronization by executing onedrive --resync
+# WARNING:
+#   The files and directories in the synchronization directory must follow the Windows naming conventions.
+#   The application will crash for example if you have two files with the same name but different case.
+#   This is expected behavior and won't be fixed.
