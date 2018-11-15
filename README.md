@@ -6,6 +6,7 @@ I've added a README file for every folder, so you can browse through to see the 
 
 This is a public snapshot of my original, private repository; which is still under active development.
 
+## Contents
 
 Includes 2 major (meaning used by a lot of other containers in this repo) base containers for GUI applications:
 * ubuntu/x11: Eclipse Che-ready container with vnc, novnc, and rdp access; with programs like Atom and Chromium.
@@ -47,5 +48,6 @@ Contains an Arch Linux base container useful for testing AUR applications on a f
 
 And many more!
 
+## Misc Notes
 
 make_dockerfiles.sh is used to generate multiple versions of dockerfiles; allowing me to, for example, have multiple chains of container tags based on different versions of Ubuntu, including Ubuntu+Cuda; without and code duplication in the files that I actually edit.
