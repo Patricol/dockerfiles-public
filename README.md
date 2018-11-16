@@ -39,10 +39,10 @@ Includes 2 major (meaning used by a lot of other containers in this repo) base c
   * Use mounted /config folders to persist all settings across the containers' destruction.
 
 Contains various containers for syncing or serving files; like:
-* alpine/sshd
-* alpine/gdrive
-* alpine/samba
-* ubuntu/onedrive
+* alpine/sshd (SFTP/SSHFS)
+* alpine/gdrive (Google Drive Mounting)
+* alpine/samba (SMB Shares)
+* ubuntu/onedrive (OneDrive Synchonization)
 
 Contains an Arch Linux base container useful for testing AUR applications on a fresh setup; aiding debugging.
 
