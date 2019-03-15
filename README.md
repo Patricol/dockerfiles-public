@@ -30,7 +30,7 @@ Includes 2 major (meaning used by a lot of other containers in this repo) base c
 * other/base/(arch/ubuntu):
   * Relatively minimal base for making GUI applications accessible via VNC; and securely through the web when paired with Guacamole.
     * Has containers for Calibre, DigiKam, FileZilla, Google Music Manager, Quassel Client, and Virt-Manager. (also WIP CrashPlan)
-  * Has base containers for both Arch Linux and Ubuntu; for the widest possible package support, and the choice between stabile and cutting-edge versions.
+  * Has base containers for both Arch Linux and Ubuntu; for the widest possible package support, and the choice between stable and cutting-edge versions.
     * Access to the AUR also trivializes the setup for many applications; thus further simplifying maintenance.
   * Supports automatically resizing the server desktop when the client window changes size/shape.
   * Runs i3 with sane defaults and powerful customization options.
