@@ -50,4 +50,4 @@ And more!
 
 ## Misc Notes
 
-make_dockerfiles.sh is used to generate multiple versions of dockerfiles; allowing me to, for example, have multiple chains of container tags based on different versions of Ubuntu, including Ubuntu+Cuda; without and code duplication in the files that I actually edit.
+make_dockerfiles.sh is used to generate multiple versions of dockerfiles; allowing me to, for example, have multiple chains of container tags based on different versions of Ubuntu, including Ubuntu+Cuda; without any code duplication in the files that I actually edit.
